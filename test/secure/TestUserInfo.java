@@ -1,4 +1,4 @@
-package com.ssafy.test.secure;
+package secure;
 
 public class TestUserInfo {
     int userId;

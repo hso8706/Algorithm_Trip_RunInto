@@ -1,8 +1,9 @@
-package test.secure;
+package secure;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import secure.TestUserInfo;
 
 public class PasswordEncryptionExample {
     public static void main(String[] args) throws NoSuchAlgorithmException {
