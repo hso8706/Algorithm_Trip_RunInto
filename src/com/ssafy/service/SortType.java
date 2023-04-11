@@ -2,7 +2,7 @@ package com.ssafy.service;
 
 public enum SortType {
     
-    NAME(0), VIEW(1);
+    TITLE(0), VIEW(1),DISTANCE(2);
     private int type;
 
     SortType(int type) {

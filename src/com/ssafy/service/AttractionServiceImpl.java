@@ -1,7 +1,5 @@
 package com.ssafy.service;
 
-import com.ssafy.dao.AttractionDAO;
-import com.ssafy.dao.AttractionDAOImpl;
 import com.ssafy.vo.Attraction;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,28 +8,13 @@ import java.util.List;
 import com.google.common.collect.ComparisonChain;
 
 
-public class AttractionServiceImpl  implements AttractionService{
+public class AttractionServiceImpl {
 
-    AttractionDAO dao;
-
-    public AttractionServiceImpl() {
-        this.dao = new AttractionDAOImpl();
-    }
-
-    @Override
-    public Attraction selectOne(String contentID) {
-        return dao.selectOne(contentID);
-    }
-
-    @Override
-    public List<Attraction> search(String sidoCode, String contentTypeID) {
-        return dao.search(sidoCode,contentTypeID);
-    }
 
     public List<Attraction> sort(List<Attraction>  attractions, SortType sortType){
 
 
-        if(sortType.equals(SortType.NAME)){ // 이름기준으로 정렬
+        if(sortType.equals(SortType.TITLE)){ // 이름기준으로 정렬
 
             Collections.sort(attractions, (o1, o2) -> ComparisonChain.start()
                 .compare(o1.getTitle(), o2.getTitle())
@@ -39,7 +22,7 @@ public class AttractionServiceImpl  implements AttractionService{
             return attractions;
         }
 
-        if(sortType.equals(SortType.NAME)){ // 조횟수 기준으로 정렬
+        if(sortType.equals(SortType.VIEW)){ // 조횟수 기준으로 정렬
            Attraction[] sorted=attractions.toArray(new Attraction[attractions.size()]);
            timSort(sorted,attractions.size());
            return Arrays.asList(sorted);

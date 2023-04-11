@@ -1,4 +1,4 @@
-package com.ssafy.test.secure;
+package test.secure;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
