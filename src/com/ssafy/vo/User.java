@@ -5,9 +5,12 @@ public class User {
     private String id;
     private String pass;
 
-    public User(String id, String pass) {
+    private String salt;
+
+    public User(String id, String pass, String salt) {
         this.id = id;
         this.pass = pass;
+        this.salt = salt;
     }
 
     public String getId() {
@@ -24,5 +27,13 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

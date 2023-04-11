@@ -32,6 +32,7 @@ public class AttractionServiceImpl {
     }
 
 
+
     public List<Attraction> search(List<Attraction>  attractions, String searchWord) {
 
         char[] pattern = searchWord.toCharArray();

@@ -4,13 +4,13 @@ public class Attraction implements Comparable<Attraction>{
 
     String title;
     String address;
-    String latitude;
-    String longitude;
+    double latitude;
+    double longitude;
     String overview;
 
     int views;
 
-    public Attraction(String title, String address, String latitude, String longitude, String overview) {
+    public Attraction(String title, String address, double latitude, double longitude, String overview) {
 
         this.title = title;
         this.address = address;
@@ -25,40 +25,18 @@ public class Attraction implements Comparable<Attraction>{
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 
     public String getOverview() {
         return overview;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public int getViews() {
+        return views;
     }
 
     @Override
@@ -74,7 +52,7 @@ public class Attraction implements Comparable<Attraction>{
 
     @Override
     public int compareTo(Attraction o) {
-        if(this.views > o.views) {
+        if(this.views < o.views) {
             return 1;
         }
         // 자기 자신의 views와 o의 views가 같다면 0
