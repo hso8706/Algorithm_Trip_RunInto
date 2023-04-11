@@ -6,14 +6,22 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordEncryptionExample {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        String password = "userPassword123"; // 암호화할 비밀번호(유저의 입력)
-        String salt = "randomSalt"; // 임의의 솔트값, 유저마다 고유하게 설정
+//        String password = "userPassword123"; // 암호화할 비밀번호(유저의 입력)
+//        String salt = "randomSalt"; // 임의의 솔트값, 유저마다 고유하게 설정
+        TestUserInfo[] testUserList = new TestUserInfo[4];
+        for (int i = 0; i < 4; i++) {
+            testUserList[i] = new TestUserInfo(i, "pw"+i, "salt"+i);
+            String password = testUserList[i].pw; // 암호화할 비밀번호(유저의 입력)
+            String salt = testUserList[i].salt; // 임의의 솔트값, 유저마다 고유하게 설정
 
-        String hashedPassword = hashPassword(password, salt); // 비밀번호 암호화 메서드
+            String hashedPassword = hashPassword(password, salt); // 비밀번호 암호화 메서드
 
-        // 암호화된 비밀번호와 솔트 출력
-        System.out.println("Hashed Password: " + hashedPassword);
-        System.out.println("Salt: " + salt);
+            // 암호화된 비밀번호와 솔트 출력
+            System.out.println("Password: " + password);
+            System.out.println("Salt: " + salt);
+            System.out.println("Hashed Password: " + hashedPassword);
+            System.out.println();
+        }
     }
 
     // 비밀번호 해시 함수
