@@ -59,7 +59,7 @@ public class Attraction implements Comparable<Attraction>{
         else if(this.views == o.views) {
             return 0;
         }
-        // 자기 자신의 views가 o의 views보다 작다면 음수
+        // 자기 자신의 views가 o의 views보다 크다면 음수
         else {
             return -1;
         }

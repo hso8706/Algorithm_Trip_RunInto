@@ -6,6 +6,7 @@ import com.ssafy.vo.Attraction;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 class AttractionServiceImplTest {
 
@@ -69,7 +70,8 @@ class AttractionServiceImplTest {
 
 
     @Test
-    void searchOne() {
+    @DisplayName("검색결과가 1개인 경우 테스트")
+    void searchOneResult() {
         String keyword="삼국통일";
         String[] searchResultTitle= {"토함산자연휴양림"};
         List<Attraction> filtered=service.search(attractions,keyword);
@@ -80,6 +82,7 @@ class AttractionServiceImplTest {
     }
 
     @Test
+    @DisplayName("검색결과가 여러개인 경우 테스트")
     void searchMultipleResult() {
         String keyword="자연";
 

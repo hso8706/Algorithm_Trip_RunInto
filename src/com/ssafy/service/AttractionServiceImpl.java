@@ -35,11 +35,14 @@ public class AttractionServiceImpl {
 
     public List<Attraction> search(List<Attraction>  attractions, String searchWord) {
 
+
+        //검색어를 기준으로 패턴생성
         char[] pattern = searchWord.toCharArray();
         int pLength = pattern.length;
 
         int[] pi = new int[pLength];
 
+        //검색은 1번이므로 패턴 테이블은 1번만 생성
         for(int i=1, j=0; i<pLength; i++){
             while(j > 0 && pattern[i] != pattern[j]) j = pi[j-1];
 
@@ -47,10 +50,11 @@ public class AttractionServiceImpl {
             else pi[i] = 0;
         }
 
+        // 필터링 결과 저장하는 배열
         List<Attraction>  filteredAttractions=new ArrayList<>();
 
         for (int k = 0; k < attractions.size() ; k++) {
-
+            // 여행지 overview를 기준으로 text 검색
             char[] text = attractions.get(k).getOverview().toCharArray();
             int tLength = text.length;
 
@@ -61,8 +65,8 @@ public class AttractionServiceImpl {
 
                 if(text[i] == pattern[j]) { //두 글자 일치
                     if(j == pLength-1) { // j가 패턴의 마지막 인덱스라면
-                        filteredAttractions.add(attractions.get(i));
-                        break; // 존재 여부만 검사
+                        filteredAttractions.add(attractions.get(i)); // 존재한다면 결과 리스트에 저장
+                        break; // 존재 여부만 검사하므로 뒤쪽 볼 필요 없음
                     }else {
                         j++;
                     }
@@ -92,8 +96,6 @@ public class AttractionServiceImpl {
         return n + r;
     }
 
-    // This function sorts array from left index to
-    // to right index which is of size atmost RUN
     public static void insertionSort(Attraction[] arr, int left, int right)
     {
         for (int i = left + 1; i <= right; i++)
@@ -109,12 +111,10 @@ public class AttractionServiceImpl {
         }
     }
 
-    // Merge function merges the sorted runs
     public static void merge(Attraction[] arr, int l,
         int m, int r)
     {
-        // Original array is broken in two parts
-        // left and right array
+        // 원래의 배열을 좌우 배열 두 가지로 나눈다.
         int len1 = m - l + 1, len2 = r - m;
         Attraction[] left = new Attraction[len1];
         Attraction[] right = new Attraction[len2];
